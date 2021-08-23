@@ -1,7 +1,40 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.75;
+}
+
 #app {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.info {
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 0.03em;
+  z-index: 1;
+}
+
+.heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  color: white;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.gui-stats {
+  height: auto !important;
+}
+
+a {
+  color: white;
 }

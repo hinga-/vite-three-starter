@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import legacy from '@vitejs/plugin-legacy'
+import eslintPlugin from 'vite-plugin-eslint'
 
 const src = path.join(__dirname, 'src')
 const imagesDir = path.join(src, 'images')
@@ -18,7 +19,7 @@ export default defineConfig({
       images: imagesDir,
       styles: stylesDir,
       '@': scriptsDir,
-      '~': src
+      '~': src,
     },
   },
   css: {
@@ -28,5 +29,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [legacy()],
+  plugins: [eslintPlugin(), legacy()],
 })

@@ -9,11 +9,6 @@ export class Scroller {
     on(window, 'scroll', this.onWindowScroll.bind(this))
   }
 
-  private onWindowScroll(): void {
-    const { pageYOffset, pageXOffset } = window
-    this.listeners.forEach((fn) => fn(pageYOffset, pageXOffset))
-  }
-
   public add(fn: Listener): void {
     this.listeners.push(fn)
   }
@@ -24,5 +19,10 @@ export class Scroller {
         this.listeners.splice(i, 1)
       }
     })
+  }
+
+  private onWindowScroll(): void {
+    const { pageYOffset, pageXOffset } = window
+    this.listeners.forEach((fn) => fn(pageYOffset, pageXOffset))
   }
 }

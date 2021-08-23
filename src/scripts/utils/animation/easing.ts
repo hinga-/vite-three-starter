@@ -139,7 +139,13 @@ export const easeInElastic: Easing = (t, b, c, d) => {
   } else {
     s = (p / (2 * Math.PI)) * Math.asin(c / a)
   }
-  return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p)) + b
+  return (
+    -(
+      a *
+      Math.pow(2, 10 * (t -= 1)) *
+      Math.sin(((t * d - s) * (2 * Math.PI)) / p)
+    ) + b
+  )
 }
 
 export const easeOutElastic: Easing = (t, b, c, d) => {
@@ -162,7 +168,11 @@ export const easeOutElastic: Easing = (t, b, c, d) => {
   } else {
     s = (p / (2 * Math.PI)) * Math.asin(c / a)
   }
-  return a * Math.pow(2, -10 * t) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) + c + b
+  return (
+    a * Math.pow(2, -10 * t) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) +
+    c +
+    b
+  )
 }
 
 export const easeInOutElastic: Easing = (t, b, c, d) => {
@@ -186,9 +196,22 @@ export const easeInOutElastic: Easing = (t, b, c, d) => {
     s = (p / (2 * Math.PI)) * Math.asin(c / a)
   }
   if (t < 1) {
-    return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p)) + b
+    return (
+      -0.5 *
+        (a *
+          Math.pow(2, 10 * (t -= 1)) *
+          Math.sin(((t * d - s) * (2 * Math.PI)) / p)) +
+      b
+    )
   }
-  return a * Math.pow(2, -10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) * 0.5 + c + b
+  return (
+    a *
+      Math.pow(2, -10 * (t -= 1)) *
+      Math.sin(((t * d - s) * (2 * Math.PI)) / p) *
+      0.5 +
+    c +
+    b
+  )
 }
 
 export const easeInBack: Easing = (t, b, c, d, s = 1.70158) => {

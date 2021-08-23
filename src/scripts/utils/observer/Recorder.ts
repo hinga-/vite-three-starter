@@ -11,13 +11,6 @@ export class Recorder {
     this.isAnimating = false
   }
 
-  private loop(): void {
-    this.rafId = requestAnimationFrame((timestamp) => {
-      this.listeners.forEach((fn) => fn(timestamp))
-      if (this.isAnimating) this.loop()
-    })
-  }
-
   public start(): void {
     this.isAnimating = true
     this.loop()
@@ -46,5 +39,12 @@ export class Recorder {
     if (this.listeners.length <= 0) {
       this.stop()
     }
+  }
+
+  private loop(): void {
+    this.rafId = requestAnimationFrame((timestamp) => {
+      this.listeners.forEach((fn) => fn(timestamp))
+      if (this.isAnimating) this.loop()
+    })
   }
 }

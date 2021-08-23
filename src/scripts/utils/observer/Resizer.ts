@@ -9,11 +9,6 @@ export class Resizer {
     on(window, 'resize', this.onWindowResize.bind(this))
   }
 
-  private onWindowResize(): void {
-    const { innerWidth, innerHeight } = window
-    this.listeners.forEach((fn) => fn(innerWidth, innerHeight))
-  }
-
   public add(fn: Listener): void {
     this.listeners.push(fn)
   }
@@ -24,5 +19,10 @@ export class Resizer {
         this.listeners.splice(i, 1)
       }
     })
+  }
+
+  private onWindowResize(): void {
+    const { innerWidth, innerHeight } = window
+    this.listeners.forEach((fn) => fn(innerWidth, innerHeight))
   }
 }

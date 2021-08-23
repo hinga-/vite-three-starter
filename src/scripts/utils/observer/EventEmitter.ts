@@ -1,10 +1,10 @@
 import { Listener } from './Listener'
 
 export class EventEmitter {
-  private listeners: Map<string, Listener[]>
   public emit: EventEmitter['fire']
   public on: EventEmitter['addEventListener']
   public off: EventEmitter['removeEventListener']
+  private listeners: Map<string, Listener[]>
 
   constructor() {
     this.listeners = new Map()
@@ -14,6 +14,7 @@ export class EventEmitter {
     this.off = this.removeEventListener
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public fire(eventName: string, ...data: any[]): void {
     if (!this.listeners.has(eventName)) {
       return
@@ -22,7 +23,7 @@ export class EventEmitter {
     listeners.forEach((listener) => listener(...data))
   }
 
-  public addEventListener(eventName: string, fn: (event?: any) => void): void {
+  public addEventListener(eventName: string, fn: Listener): void {
     if (!this.listeners.has(eventName)) {
       this.listeners.set(eventName, [fn])
     } else {
@@ -31,7 +32,7 @@ export class EventEmitter {
     }
   }
 
-  public removeEventListener(eventName: string, fn: (event?: any) => void): void {
+  public removeEventListener(eventName: string, fn: Listener): void {
     if (eventName === '*') {
       //
     } else if (this.listeners.has(eventName)) {
