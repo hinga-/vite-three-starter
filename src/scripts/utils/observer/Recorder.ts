@@ -1,14 +1,24 @@
-import { Listener } from './Listener'
+interface Listener {
+  (timestamp: number): void
+}
 
 export class Recorder {
+  private static instance: Recorder
   private rafId: number | null
   private listeners: Listener[]
   private isAnimating: boolean
 
-  constructor() {
+  private constructor() {
     this.rafId = null
     this.listeners = []
     this.isAnimating = false
+  }
+
+  public static getInstance() {
+    if (!this.instance) {
+      this.instance = new Recorder()
+    }
+    return this.instance
   }
 
   public start(): void {

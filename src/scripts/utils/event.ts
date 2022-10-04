@@ -39,3 +39,11 @@ export const off: Listener = (
 ): void => {
   element.removeEventListener(eventType, fn, options)
 }
+
+export const trigger = (
+  eventName: string,
+  element: Element | Window | Document
+) => {
+  const event = new Event(eventName, { bubbles: true, cancelable: false })
+  element.dispatchEvent(event)
+}

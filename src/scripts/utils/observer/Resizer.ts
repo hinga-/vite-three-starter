@@ -1,12 +1,23 @@
 import { on } from '@/utils/event'
-import { Listener } from './Listener'
+
+interface Listener {
+  (width: number, height: number): void
+}
 
 export class Resizer {
+  private static instance: Resizer
   private listeners: Listener[]
 
-  constructor() {
+  private constructor() {
     this.listeners = []
     on(window, 'resize', this.onWindowResize.bind(this))
+  }
+
+  public static getInstance() {
+    if (!this.instance) {
+      this.instance = new Resizer()
+    }
+    return this.instance
   }
 
   public add(fn: Listener): void {

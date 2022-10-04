@@ -19,5 +19,5 @@
       "*": ["src/scripts/@types/*"]
     }
   },
-  "include": ["./src", "src/vite-env.d.ts"]
+  "include": ["./src", "src/vite-env.d.ts", ".eslintrc.cjs", "./vite.config.ts"]
 }

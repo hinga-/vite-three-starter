@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
 import path from 'path'
-import legacy from '@vitejs/plugin-legacy'
+
+import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
+import glsl from 'vite-plugin-glsl'
 
 const src = path.join(__dirname, 'src')
 const imagesDir = path.join(src, 'images')
@@ -29,5 +30,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [eslintPlugin(), legacy()],
+  plugins: [eslintPlugin(), glsl()],
 })

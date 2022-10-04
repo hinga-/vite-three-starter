@@ -1,9 +1,4 @@
-import { Resizer } from './Resizer'
-import { Scroller } from './Scroller'
 import { Recorder } from './Recorder'
-import { EventEmitter } from './EventEmitter'
+import { Resizer } from './Resizer'
 
-export const resizer = new Resizer()
-export const scroller = new Scroller()
-export const recorder = new Recorder()
-export const emitter = new EventEmitter()
+export { Recorder, Resizer }

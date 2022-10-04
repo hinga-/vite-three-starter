@@ -6,11 +6,7 @@ export class FramesPerSecond {
     this.change(fps)
     this.currentTime = performance.now()
   }
-
-  public change(fps: number): void {
-    this.framerate = 1000 / fps
-  }
-
+  
   get check(): boolean {
     const now: number = performance.now()
     const elapsed: number = now - this.currentTime
@@ -19,5 +15,9 @@ export class FramesPerSecond {
       return true
     }
     return false
+  }
+
+  public change(fps: number): void {
+    this.framerate = 1000 / fps
   }
 }
